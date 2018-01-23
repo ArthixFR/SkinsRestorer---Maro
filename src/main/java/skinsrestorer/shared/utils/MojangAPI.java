@@ -29,14 +29,14 @@ public class MojangAPI {
         try {
             output = readURL(skinurl + uuid + "?unsigned=false");
 
-            String sigbeg = "\"signature\":\"";
-            String mid = "\",\"name\":\"textures\",\"value\":\"";
+            String sigbeg = "\",\"signature\":\"";
+            String mid = "[{\"name\":\"textures\",\"value\":\"";
             String valend = "\"}]";
 
             String signature = "", value = "";
 
-            value = getStringBetween(output, mid, valend);
-            signature = getStringBetween(output, sigbeg, mid);
+            value = getStringBetween(output, mid, sigbeg);
+            signature = getStringBetween(output, sigbeg, valend);
 
             return SkinStorage.createProperty("textures", value, signature);
         } catch (Exception e) {
@@ -50,14 +50,14 @@ public class MojangAPI {
         try {
             output = readURLProxy(skinurl + uuid + "?unsigned=false");
 
-            String sigbeg = "\"signature\":\"";
-            String mid = "\",\"name\":\"textures\",\"value\":\"";
+            String sigbeg = "\",\"signature\":\"";
+            String mid = "[{\"name\":\"textures\",\"value\":\"";
             String valend = "\"}]";
 
             String signature = "", value = "";
 
-            value = getStringBetween(output, mid, valend);
-            signature = getStringBetween(output, sigbeg, mid);
+            value = getStringBetween(output, mid, sigbeg);
+            signature = getStringBetween(output, sigbeg, valend);;
 
             return SkinStorage.createProperty("textures", value, signature);
         } catch (Exception e) {
